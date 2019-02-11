@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HamburgerMenuBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="indoor_navigation_a" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -55,28 +56,52 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Am3-yz-Fn6">
                                         <rect key="frame" x="0.0" y="13" width="96" height="24"/>
-                                        <state key="normal" image="shops"/>
+                                        <state key="normal" image="Shops"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi8-Ag-o2z">
                                         <rect key="frame" x="106" y="13" width="96" height="24"/>
-                                        <state key="normal" image="makeway"/>
+                                        <state key="normal" image="FindWayInside"/>
+                                        <connections>
+                                            <segue destination="xRm-HI-DuM" kind="presentation" id="edx-hA-Xbe"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ev-dH-oRx">
                                         <rect key="frame" x="212" y="13" width="96" height="24"/>
-                                        <state key="normal" image="buildings"/>
+                                        <state key="normal" image="Buildings"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lM-P9-e0w">
                                         <rect key="frame" x="318" y="13" width="96" height="24"/>
-                                        <state key="normal" image="world"/>
+                                        <state key="normal" image="World"/>
                                         <connections>
                                             <segue destination="z0D-XQ-ORg" kind="show" id="eYf-06-71T"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDF-lV-B1w">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDF-lV-B1w" customClass="MapView" customModule="indoor_navigation_a" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="145" width="414" height="667"/>
+                                <subviews>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="VJz-MB-dDd">
+                                        <rect key="frame" x="160" y="589.5" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="floorStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="ukV-NG-Huh"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Floor: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJ2-v8-WjE">
+                                        <rect key="frame" x="178" y="626.5" width="58.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.85181007922535212" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="DJ2-v8-WjE" firstAttribute="top" secondItem="VJz-MB-dDd" secondAttribute="bottom" constant="8" symbolic="YES" id="7xj-zM-7ZE"/>
+                                    <constraint firstItem="VJz-MB-dDd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uDF-lV-B1w" secondAttribute="top" constant="20" symbolic="YES" id="MXz-dK-3gs"/>
+                                    <constraint firstItem="DJ2-v8-WjE" firstAttribute="centerX" secondItem="uDF-lV-B1w" secondAttribute="centerX" id="XXn-Tn-bv2"/>
+                                    <constraint firstItem="VJz-MB-dDd" firstAttribute="centerX" secondItem="uDF-lV-B1w" secondAttribute="centerX" id="qmu-ak-QJf"/>
+                                    <constraint firstAttribute="bottom" secondItem="DJ2-v8-WjE" secondAttribute="bottom" constant="20" symbolic="YES" id="t0J-gQ-USr"/>
+                                </constraints>
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SED-Ai-Cx9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="57"/>
@@ -119,7 +144,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vBS-Mq-DX7">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="2LJ-ua-86Y">
+                        <barButtonItem key="leftBarButtonItem" image="Hamburger" id="2LJ-ua-86Y">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="hamburgerBtnTapped:" destination="BYZ-38-t0r" id="ZFu-Bi-6vi"/>
@@ -152,7 +177,7 @@
                                 <constraint firstAttribute="bottom" secondItem="0Oz-vt-wN4" secondAttribute="bottom" id="ua0-VK-0oV"/>
                             </constraints>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="XHs-LA-7Vq">
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="XHs-LA-7Vq">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="rCj-gg-1jq" kind="show" id="Q6a-WL-HYt"/>
@@ -160,11 +185,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="currentFloorLabel" destination="DJ2-v8-WjE" id="Kba-33-ZtM"/>
                         <outlet property="leadingC" destination="ygX-dp-9ms" id="9RH-Cb-kr9"/>
                         <outlet property="leadingS" destination="8gC-rJ-CIz" id="d6r-Ah-qMx"/>
+                        <outlet property="mapView" destination="uDF-lV-B1w" id="jYq-FX-ZWb"/>
                         <outlet property="trailingC" destination="kpI-UM-coG" id="AUk-ZC-UMX"/>
                         <outlet property="trailingS" destination="0YE-Y8-Z3X" id="Bxf-cQ-6ic"/>
-                        <outlet property="ubeView" destination="uDF-lV-B1w" id="OJW-mN-ROp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -174,7 +200,7 @@
         <!--World Map View Controller-->
         <scene sceneID="L8Q-SV-BAQ">
             <objects>
-                <viewController id="z0D-XQ-ORg" customClass="WorldMapViewController" customModule="HamburgerMenuBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z0D-XQ-ORg" customClass="WorldMapViewController" customModule="indoor_navigation_a" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MJi-8b-d1H"/>
                         <viewControllerLayoutGuide type="bottom" id="Tsx-IF-15G"/>
@@ -186,8 +212,12 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YrD-Us-GLP">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hi-fs-Iug">
-                                <rect key="frame" x="348" y="648" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hi-fs-Iug">
+                                <rect key="frame" x="344" y="648" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="DQo-kd-npV"/>
+                                    <constraint firstAttribute="height" constant="50" id="jvf-sl-6Af"/>
+                                </constraints>
                                 <state key="normal" image="CurrentLocation"/>
                                 <connections>
                                     <action selector="CurrentLocation:" destination="z0D-XQ-ORg" eventType="touchUpInside" id="P5k-ao-SDT"/>
@@ -197,18 +227,20 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7f-or-rg8" userLabel="FindWay">
-                                <rect key="frame" x="348" y="739" width="50" height="50"/>
-                                <state key="normal" image="FindWorldWay"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7f-or-rg8" userLabel="FindWay">
+                                <rect key="frame" x="344" y="737" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5q1-0i-OLF"/>
+                                    <constraint firstAttribute="width" constant="50" id="bw4-mM-4a9"/>
+                                </constraints>
+                                <state key="normal" image="FindWayOut"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="U7f-or-rg8" firstAttribute="top" secondItem="7Hi-fs-Iug" secondAttribute="bottom" constant="20" id="ALU-Qh-rVE"/>
+                            <constraint firstItem="U7f-or-rg8" firstAttribute="top" secondItem="7Hi-fs-Iug" secondAttribute="bottom" constant="39" id="ALU-Qh-rVE"/>
                             <constraint firstAttribute="trailing" secondItem="YrD-Us-GLP" secondAttribute="trailing" id="Auo-RQ-3ki"/>
                             <constraint firstItem="7Hi-fs-Iug" firstAttribute="top" secondItem="MJi-8b-d1H" secondAttribute="bottom" constant="560" id="Ne1-SZ-w7n"/>
-                            <constraint firstItem="U7f-or-rg8" firstAttribute="leading" secondItem="yMa-B4-QuC" secondAttribute="leading" constant="348" id="OR9-w1-mta"/>
-                            <constraint firstItem="7Hi-fs-Iug" firstAttribute="leading" secondItem="yMa-B4-QuC" secondAttribute="leading" constant="348" id="SAO-rf-pg8"/>
                             <constraint firstItem="YrD-Us-GLP" firstAttribute="top" secondItem="Mra-bX-XcA" secondAttribute="bottom" id="SK9-zI-I0G"/>
                             <constraint firstItem="Tsx-IF-15G" firstAttribute="top" secondItem="7Hi-fs-Iug" secondAttribute="bottom" constant="164" id="TLs-gt-cY4"/>
                             <constraint firstItem="Mra-bX-XcA" firstAttribute="leading" secondItem="yMa-B4-QuC" secondAttribute="leading" id="bee-cQ-hHI"/>
@@ -266,15 +298,23 @@
             </objects>
             <point key="canvasLocation" x="268" y="132"/>
         </scene>
+        <!--FindInside-->
+        <scene sceneID="iYj-2H-jPJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FindInside" id="xRm-HI-DuM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="imO-9A-iLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="635"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Buildings" width="24" height="24"/>
         <image name="CurrentLocation" width="48" height="48"/>
-        <image name="FindWorldWay" width="48" height="48"/>
-        <image name="buildings" width="24" height="24"/>
-        <image name="hamburger" width="24" height="24"/>
-        <image name="makeway" width="24" height="24"/>
-        <image name="settings" width="24" height="24"/>
-        <image name="shops" width="24" height="24"/>
-        <image name="world" width="24" height="24"/>
+        <image name="FindWayInside" width="24" height="24"/>
+        <image name="FindWayOut" width="48" height="48"/>
+        <image name="Hamburger" width="24" height="24"/>
+        <image name="Settings" width="24" height="24"/>
+        <image name="Shops" width="24" height="24"/>
+        <image name="World" width="24" height="24"/>
     </resources>
 </document>

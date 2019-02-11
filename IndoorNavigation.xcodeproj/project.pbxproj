@@ -17,10 +17,10 @@
 		C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2922048BCF008FA557 /* GraphVertex.swift */; };
 		C854C452220C7E8700E28A81 /*  Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C451220C7E8700E28A81 /*  Geometry.swift */; };
 		C854C454220D7D1600E28A81 /* BeaconSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C453220D7D1600E28A81 /* BeaconSupport.swift */; };
-		C86E48CD220EF00D0043C86E /* WorldMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */; };
-		C86E48D0220EF1290043C86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E48CE220EF1290043C86E /* Main.storyboard */; };
 		C8819CD0220F32A9007FDBE9 /* FireBaseWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8819CCF220F32A8007FDBE9 /* FireBaseWork.swift */; };
 		C8819CD6220F374F007FDBE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */; };
+		C888124D2211B8EC003F5EF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C888124B2211B8EC003F5EF2 /* Main.storyboard */; };
+		C888124F2211B8F8003F5EF2 /* WorldMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C888124E2211B8F8003F5EF2 /* WorldMapViewController.swift */; };
 		C8C52DAC220F3A9100072C78 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA4220F3A9100072C78 /* Session+CoreDataProperties.swift */; };
 		C8C52DAD220F3A9100072C78 /* Rooms+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA5220F3A9100072C78 /* Rooms+CoreDataProperties.swift */; };
 		C8C52DAE220F3A9100072C78 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA6220F3A9100072C78 /* Buildings+CoreDataProperties.swift */; };
@@ -62,10 +62,10 @@
 		C8253D2922048BCF008FA557 /* GraphVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphVertex.swift; sourceTree = "<group>"; };
 		C854C451220C7E8700E28A81 /*  Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Geometry.swift"; sourceTree = "<group>"; };
 		C854C453220D7D1600E28A81 /* BeaconSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconSupport.swift; sourceTree = "<group>"; };
-		C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldMapViewController.swift; path = "../../../Desktop/Hamburger-Menu-Blog-master/HamburgerMenuBlog/WorldMapViewController.swift"; sourceTree = "<group>"; };
-		C86E48CF220EF1290043C86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../Desktop/Hamburger-Menu-Blog-master/HamburgerMenuBlog/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		C8819CCF220F32A8007FDBE9 /* FireBaseWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseWork.swift; sourceTree = "<group>"; };
 		C8819CD5220F374E007FDBE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C888124C2211B8EC003F5EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C888124E2211B8F8003F5EF2 /* WorldMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldMapViewController.swift; sourceTree = "<group>"; };
 		C8C52DA4220F3A9100072C78 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8C52DA5220F3A9100072C78 /* Rooms+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rooms+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8C52DA6220F3A9100072C78 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -167,13 +167,13 @@
 				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
 				C8253D2922048BCF008FA557 /* GraphVertex.swift */,
 				C8253D1522047481008FA557 /* ViewController.swift */,
-				C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */,
+				C888124E2211B8F8003F5EF2 /* WorldMapViewController.swift */,
 				C8C52DB8221024F200072C78 /* FinderInsideViewController.swift */,
 				C8253D1322047481008FA557 /* AppDelegate.swift */,
 				C8253D1A22047482008FA557 /* Assets.xcassets */,
 				C8C52DBA2210250400072C78 /* FindInside.storyboard */,
+				C888124B2211B8EC003F5EF2 /* Main.storyboard */,
 				C8253D1C22047482008FA557 /* LaunchScreen.storyboard */,
-				C86E48CE220EF1290043C86E /* Main.storyboard */,
 				C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */,
 				C8253D1F22047482008FA557 /* Info.plist */,
 				9CDF449622098E80000BECF9 /* images.xcassets */,
@@ -245,9 +245,9 @@
 				C8253D1E22047482008FA557 /* LaunchScreen.storyboard in Resources */,
 				9CDF449722098E80000BECF9 /* images.xcassets in Resources */,
 				C8819CD6220F374F007FDBE9 /* GoogleService-Info.plist in Resources */,
+				C888124D2211B8EC003F5EF2 /* Main.storyboard in Resources */,
 				C8C52DBC2210250400072C78 /* FindInside.storyboard in Resources */,
 				C8253D1B22047482008FA557 /* Assets.xcassets in Resources */,
-				C86E48D0220EF1290043C86E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +316,7 @@
 				C8CEBAB32209D73F00F77AF7 /* Vertex+CoreDataClass.swift in Sources */,
 				C854C454220D7D1600E28A81 /* BeaconSupport.swift in Sources */,
 				C8CEBAB02209D73F00F77AF7 /* Session+CoreDataClass.swift in Sources */,
+				C888124F2211B8F8003F5EF2 /* WorldMapViewController.swift in Sources */,
 				C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */,
 				C8C52DAD220F3A9100072C78 /* Rooms+CoreDataProperties.swift in Sources */,
 				C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */,
@@ -334,7 +335,6 @@
 				C8CEBAA22209D71E00F77AF7 /* Beacons+CoreDataClass.swift in Sources */,
 				C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */,
 				C8CEBAB82209D76C00F77AF7 /* TableModule.xcdatamodeld in Sources */,
-				C86E48CD220EF00D0043C86E /* WorldMapViewController.swift in Sources */,
 				C8CEBAA32209D71E00F77AF7 /* CoreDataHelper.swift in Sources */,
 				C8C52DAE220F3A9100072C78 /* Buildings+CoreDataProperties.swift in Sources */,
 				C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */,
@@ -353,20 +353,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		C86E48CE220EF1290043C86E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C86E48CF220EF1290043C86E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C8819CD5220F374E007FDBE9 /* Base */,
 			);
 			name = "GoogleService-Info.plist";
+			sourceTree = "<group>";
+		};
+		C888124B2211B8EC003F5EF2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C888124C2211B8EC003F5EF2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		C8C52DBA2210250400072C78 /* FindInside.storyboard */ = {

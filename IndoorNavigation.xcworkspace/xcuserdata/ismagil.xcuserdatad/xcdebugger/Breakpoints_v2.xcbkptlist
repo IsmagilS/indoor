@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/FinderInsideViewController.swift"
-            timestampString = "571517109.8477581"
+            timestampString = "571587323.8775001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/ViewController.swift"
-            timestampString = "571517109.8489161"
+            timestampString = "571611122.760429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/FireBaseWork.swift"
-            timestampString = "571517109.849287"
+            timestampString = "571587638.602798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "522"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/FireBaseWork.swift"
-            timestampString = "571517109.849345"
+            timestampString = "571587638.603424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/ViewController.swift"
-            timestampString = "571517109.849399"
+            timestampString = "571611122.7610559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "292"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/FireBaseWork.swift"
-            timestampString = "571517109.8500431"
+            timestampString = "571587638.603985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "506"
@@ -272,6 +272,22 @@
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "findShortestPathRunningDijkstra(start:finish:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IndoorNavigation/FireBaseWork.swift"
+            timestampString = "571587638.6045671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "readRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
