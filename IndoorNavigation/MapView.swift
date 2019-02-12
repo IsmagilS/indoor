@@ -25,6 +25,13 @@ class MapView: UIView {
     
     var drawCurrentPosition = false { didSet { setNeedsDisplay() } }
     
+    private var minX = 0.0
+    private var maxX = 0.0
+    private var minY = 0.0
+    private var maxY = 0.0
+    private var ratioX = 0.0
+    private var ratioY = 0.0
+    
     
     @objc func adjustMapScale(byHandlingGestureRecognizer recognizer: UIPinchGestureRecognizer) {
         switch recognizer.state {
@@ -37,6 +44,51 @@ class MapView: UIView {
             if mapScale > 10 {
                 mapScale = 10
             }
+        default:
+            break
+        }
+    }
+    
+    @objc func getTappedRectangle(UsingHandlingGestureRecognizer recognizer: UITapGestureRecognizer) {
+        switch recognizer.state {
+        case .ended:
+            let magic = min(bounds.width, bounds.height)
+            
+            var localPolygon: Polygon?
+            for rectangle in allRooms {
+                if rectangle.floorsrelationship != currentFloor {
+                    continue
+                }
+                
+                let figure = Polygon(points: rectangle.parsePolygon() ?? [])
+                
+                if figure.points.count == 0 {
+                    continue
+                }
+                
+                figure.offset(dx: -minX, dy: -minY)
+                figure.adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
+                figure.offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01)
+                figure.adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
+                figure.offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+                
+                let point = recognizer.location(in: recognizer.view)
+                //point = point.offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+                
+                if figure.isInside(point: (x: Double(point.x), y: Double(point.y))) {
+                    if localPolygon == nil {
+                        localPolygon = figure
+                    }
+                    else {
+                        if localPolygon!.square() > figure.square() {
+                            localPolygon = figure
+                        }
+                    }
+                }
+            }
+            
+            print("@@@@@@@@@@@@@@@")
+            print(localPolygon?.points ?? [])
         default:
             break
         }
@@ -85,8 +137,7 @@ class MapView: UIView {
         currentPosition = location
     }
     
-    private func drawRooms(rooms: [Rooms], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
-        
+    private func drawRooms(rooms: [Rooms]) {
         let magic = min(bounds.width, bounds.height)
         
         var figures =  [Polygon]()
@@ -118,8 +169,7 @@ class MapView: UIView {
         }
     }
     
-    private func drawExits(exits: [Edge], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
-        
+    private func drawExits(exits: [Edge]) {
         let magic = min(bounds.width, bounds.height)
         
         var exitsLines = [Polygon]()
@@ -154,8 +204,7 @@ class MapView: UIView {
         }
     }
     
-    private func drawPoints(vertexes: [CGPoint], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) -> [CGPoint] {
-        
+    private func drawPoints(vertexes: [CGPoint]) -> [CGPoint] {
         let magic = min(bounds.width, bounds.height)
         
         var secondVertexesArray = vertexes
@@ -192,8 +241,7 @@ class MapView: UIView {
         return secondVertexesArray
     }
     
-    private func drawPath(vertexes: [CGPoint]?, minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
-        
+    private func drawPath(vertexes: [CGPoint]?) {
         if vertexes == nil {
             return
         }
@@ -228,10 +276,10 @@ class MapView: UIView {
             return
         }
         
-        var minX = Double.infinity
-        var maxX = -Double.infinity
-        var minY = Double.infinity
-        var maxY = -Double.infinity
+        minX = Double.infinity
+        maxX = -Double.infinity
+        minY = Double.infinity
+        maxY = -Double.infinity
         
         for current in currentFloor!.roomsrelationship! {
             for point in (current as! Rooms).parsePolygon()! {
@@ -245,8 +293,8 @@ class MapView: UIView {
         
         let magic = min(bounds.width, bounds.height)
         
-        let ratioX = (Double(magic) * 0.98) / (maxX - minX)
-        let ratioY = (Double(magic) * 0.98) / (maxY - minY)
+        ratioX = (Double(magic) * 0.98) / (maxX - minX)
+        ratioY = (Double(magic) * 0.98) / (maxY - minY)
         
         //--------Ismagil's comment----------
         /*
@@ -261,9 +309,9 @@ class MapView: UIView {
             }
         }
         
-        drawRooms(rooms: rooms, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        drawRooms(rooms: rooms)
         
-        drawExits(exits: allEdges, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        drawExits(exits: allEdges)
         
         var vertexes = [CGPoint]()
         for current in allEdges {
@@ -290,7 +338,7 @@ class MapView: UIView {
         else {
             drawCurrentPosition = false
         }
-        vertexes = drawPoints(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        vertexes = drawPoints(vertexes: vertexes)
         
         //--------Ismagil's comment----------
         /*
@@ -316,7 +364,7 @@ class MapView: UIView {
                 }
             }
             
-            drawPath(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+            drawPath(vertexes: vertexes)
         }
     }
 }

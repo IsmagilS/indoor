@@ -66,6 +66,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
             let pan = UIPanGestureRecognizer(target: mapView, action: #selector(MapView.adjustMapOffset(byHandlingGestureRecognizer:)))
             mapView.isUserInteractionEnabled = true
             mapView.addGestureRecognizer(pan)
+            
+            let tap = UITapGestureRecognizer(target: mapView, action: #selector(MapView.getTappedRectangle(UsingHandlingGestureRecognizer:)))
+            mapView.addGestureRecognizer(tap)
         }
     }
     @IBAction func floorStepper(_ sender: UIStepper) {
