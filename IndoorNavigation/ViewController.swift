@@ -101,6 +101,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
             allRooms = Rooms.allitems()
             allFloors = Floors.allitems()
             getDataBeacons = Beacons.allitems()
+            allFloors = allFloors.sorted(by: { $0.name ?? "kek" < $1.name ?? "kek" })
         }
         
         
