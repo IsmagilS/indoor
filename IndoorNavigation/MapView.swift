@@ -120,6 +120,11 @@ class MapView: UIView {
     func findLocation(_ beacons: [(signal : Int, item: Beacons)]) {
         var array = beacons.sorted(by: { $0.signal < $1.signal })
         
+        for current in array {
+            print(current.signal, current.item.name, current.item.majorminor)
+        }
+        print("@@@@@@@@@")
+        
         var sumOfAll = (x: 0.0, y: 0.0)
         var countOfAll = 0.0
         for current in array {

@@ -23,8 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
     @IBOutlet weak var leadingS: NSLayoutConstraint!
     @IBOutlet weak var trailingS: NSLayoutConstraint!
     @IBOutlet var leadingC: NSLayoutConstraint!
-    @IBOutlet var trailingC: NSLayoutConstraint!    
-    
+    @IBOutlet var trailingC: NSLayoutConstraint!
     
     var hamburgerMenuIsVisible = false
     @IBAction func hamburgerBtnTapped(_ sender: Any) {
@@ -114,14 +113,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
         
         view.addGestureRecognizer(rightSwipe)
         view.addGestureRecognizer(leftSwipe)
-        
+
         locationManager.delegate = self
-        //locationManager.requestAlwaysAuthorization()
         
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse) {
             locationManager.requestWhenInUseAuthorization()
         }
-        //locationManager.startRangingBeaconsInRegion(region)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -135,10 +132,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
     }
     
     func startScanning() {
-        let uuid = UUID(uuidString: "10F86430-1346-11E4-9191-0800200C9A66")! // Fine // last digit was 5 early
-        //E2 C5 6D B5 DF FB 48 D2 B0 60 D0 F5 A7 10 96 E0
-        
-        //        let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: 34832, minor: 34833, identifier: "brf0") // fine
+        let uuid = UUID(uuidString: "10F86430-1346-11E4-9191-0800200C9A66")!
         
         let beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "brf0")
         locationManager.startMonitoring(for: beaconRegion)
@@ -146,24 +140,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        if beacons.count > 0 {
-            // major 123 minor 1
-            
+        if beacons.count > 0, getDataBeacons.count > 0, beacons.count <= getDataBeacons.count {
             var allBeacons = [(Int, Beacons)]()
             for current in getDataBeacons {
                 allBeacons.append((0, current))
             }
+            let sortedBeacons = beacons.sorted(by: { Int(truncating: $0.major) < Int(truncating: $1.major) })
             
-            for index in beacons.indices {
+            for index in sortedBeacons.indices {
                 //let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
                 var distance: Int
-                if beacons[index].proximity == .immediate {
+                if sortedBeacons[index].proximity == .immediate {
                     distance = 0
                 }
-                else if beacons[index].proximity == .near {
+                else if sortedBeacons[index].proximity == .near {
                     distance = 1
                 }
-                else if beacons[index].proximity == .far {
+                else if sortedBeacons[index].proximity == .far {
                     distance = 2
                 }
                 else {
@@ -237,8 +230,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
         }
     }
     
-    ////////added by Vadim
     func newSearch(_ controller: FinderInsideViewController,  fromField: String, ToField: String) {
+        ////////added by Vadim
         dismiss(animated: true, completion: nil)
         print(fromField)
         print(ToField)
