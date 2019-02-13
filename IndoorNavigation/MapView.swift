@@ -25,6 +25,8 @@ class MapView: UIView {
     
     var drawCurrentPosition = false { didSet { setNeedsDisplay() } }
     
+    var showString: String? = nil
+    
     private var minX = 0.0
     private var maxX = 0.0
     private var minY = 0.0
@@ -77,10 +79,12 @@ class MapView: UIView {
                 
                 if figure.isInside(point: (x: Double(point.x), y: Double(point.y))) {
                     if localPolygon == nil {
+                        showString = rectangle.name
                         localPolygon = figure
                     }
                     else {
                         if localPolygon!.square() > figure.square() {
+                            showString = rectangle.name
                             localPolygon = figure
                         }
                     }
@@ -161,7 +165,7 @@ class MapView: UIView {
             }
             path.close()
             
-            path.lineWidth = CGFloat(3.0)
+            path.lineWidth = CGFloat(3/2.0) * mapScale
             #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).setFill()
             UIColor.black.setStroke()
             path.fill()
@@ -198,7 +202,7 @@ class MapView: UIView {
             path.move(to: CGPoint(x: current.points[0].x, y: current.points[0].y))
             path.addLine(to: CGPoint(x: current.points[1].x, y: current.points[1].y))
             
-            path.lineWidth = CGFloat(2.0)
+            path.lineWidth = CGFloat(1.0) * mapScale
             UIColor.white.setStroke()
             path.stroke()
         }
@@ -217,20 +221,20 @@ class MapView: UIView {
             let path = UIBezierPath()
             
             if (drawCurrentPosition == true && current == secondVertexesArray.last!) {
-                path.addArc(withCenter: current, radius: CGFloat(6), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+                path.addArc(withCenter: current, radius: CGFloat(3) * mapScale, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
                 path.close()
                 
-                path.lineWidth = CGFloat(1.0)
+                path.lineWidth = CGFloat(0.5) * mapScale
                 UIColor.green.setFill()
                 UIColor.black.setStroke()
                 path.fill()
                 path.stroke()
             }
             else {
-                path.addArc(withCenter: current, radius: CGFloat(3), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+                path.addArc(withCenter: current, radius: CGFloat(1) * mapScale, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
                 path.close()
                 
-                path.lineWidth = CGFloat(2.0)
+                path.lineWidth = CGFloat(0.5) * mapScale
                 UIColor.blue.setFill()
                 UIColor.black.setStroke()
                 path.fill()
@@ -261,11 +265,34 @@ class MapView: UIView {
         let start = secondVertexesArray[0]
         path.move(to: CGPoint(x: start.x, y: start.y))
         
+        var previousVertex = start
         for current in secondVertexesArray {
             path.addLine(to: CGPoint(x: current.x, y: current.y))
+            
+            var vector = (x: Double(current.x - previousVertex.x), y: Double(current.y - previousVertex.y))
+            let vectorLength = distance((x: Double(current.x), y: Double(current.y)), (x: Double(previousVertex.x), y: Double(previousVertex.y)))
+            
+            vector.x /= vectorLength
+            vector.y /= vectorLength
+            
+            previousVertex = current
+            
+            let point = (x: Double(current.x) - vector.x * vectorLength / 5, y: Double(current.y) - vector.y * vectorLength / 5)
+            
+            let arrow = UIBezierPath()
+            arrow.move(to: CGPoint(x: point.x - vectorLength / 15 * vector.y, y: point.y + vectorLength / 15 * vector.x))
+            arrow.addLine(to: current)
+            arrow.addLine(to: CGPoint(x: point.x + vectorLength / 15 * vector.y, y: point.y - vectorLength / 15 * vector.x))
+            arrow.close()
+            
+            arrow.lineWidth = 1.0
+            //UIColor.black.setStroke()
+            UIColor.blue.setFill()
+            //arrow.stroke()
+            arrow.fill()
         }
         
-        path.lineWidth = CGFloat(3.0)
+        path.lineWidth = CGFloat(0.6) * mapScale
         UIColor.blue.setStroke()
         path.stroke()
     }
@@ -314,7 +341,7 @@ class MapView: UIView {
         drawExits(exits: allEdges)
         
         var vertexes = [CGPoint]()
-        for current in allEdges {
+        /*for current in allEdges {
             if let vertex = current.vertexfromrelationship {
                 if let room = vertex.roomsrelationship {
                     if room.floorsrelationship == currentFloor, let point = vertex.parseCoordinates() {
@@ -329,7 +356,7 @@ class MapView: UIView {
                     }
                 }
             }
-        }
+        }*/
         
         if let position = currentPosition {
             vertexes.append(position)

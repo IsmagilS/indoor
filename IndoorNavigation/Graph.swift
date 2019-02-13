@@ -72,7 +72,7 @@ class Graph {
                         if finishVertex == nil {
                             finishVertex = vertex
                         }
-                        else if distances[finishVertex!]! < distances[vertex]! {
+                        else if distances[finishVertex!]! > distances[vertex]! {
                             finishVertex = vertex
                         }
                     }
@@ -150,7 +150,7 @@ class Graph {
                     if finishVertex == nil {
                         finishVertex = vertex
                     }
-                    else if distances[finishVertex!]! < distances[vertex]! {
+                    else if distances[finishVertex!]! > distances[vertex]! {
                         finishVertex = vertex
                     }
                 }
