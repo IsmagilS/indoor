@@ -72,7 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
     }
     @IBAction func floorStepper(_ sender: UIStepper) {
         mapView.currentFloor = allFloors[Int(sender.value)]
-        currentFloorLabel.text = "Floor: \(Int(sender.value))"
+        currentFloorLabel.text = "Этаж: \(Int(sender.value) + 1)"
     }
     
     @IBOutlet weak var currentFloorLabel: UILabel!
