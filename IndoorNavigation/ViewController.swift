@@ -145,25 +145,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
             for current in getDataBeacons {
                 allBeacons.append((0, current))
             }
-            let sortedBeacons = beacons.sorted(by: { Int(truncating: $0.major) < Int(truncating: $1.major) })
             
-            for index in sortedBeacons.indices {
+            
+            for index in beacons.indices {
                 //let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
                 var distance: Int
-                if sortedBeacons[index].proximity == .immediate {
+                if beacons[index].proximity == .immediate {
                     distance = 0
                 }
-                else if sortedBeacons[index].proximity == .near {
+                else if beacons[index].proximity == .near {
                     distance = 1
                 }
-                else if sortedBeacons[index].proximity == .far {
+                else if beacons[index].proximity == .far {
                     distance = 2
                 }
                 else {
                     distance = 3
                 }
                 
-                allBeacons[index].0 = distance
+                for secondIndex in allBeacons.indices {
+                    if allBeacons[secondIndex].1.parseMajorMinor().major == Int(truncating: beacons[index].major) {
+                        allBeacons[secondIndex].0 = distance
+                    }
+                }
             }
             
             mapView.drawCurrentPosition = true
