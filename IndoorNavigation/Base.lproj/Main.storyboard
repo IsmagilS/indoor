@@ -93,15 +93,27 @@
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrH-0R-hsi">
+                                        <rect key="frame" x="207" y="581.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.85181007922535212" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="VJz-MB-dDd" firstAttribute="top" secondItem="lrH-0R-hsi" secondAttribute="bottom" constant="8" symbolic="YES" id="12j-IA-E2V"/>
                                     <constraint firstItem="DJ2-v8-WjE" firstAttribute="top" secondItem="VJz-MB-dDd" secondAttribute="bottom" constant="8" symbolic="YES" id="7xj-zM-7ZE"/>
                                     <constraint firstItem="VJz-MB-dDd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uDF-lV-B1w" secondAttribute="top" constant="20" symbolic="YES" id="MXz-dK-3gs"/>
                                     <constraint firstItem="DJ2-v8-WjE" firstAttribute="centerX" secondItem="uDF-lV-B1w" secondAttribute="centerX" id="XXn-Tn-bv2"/>
+                                    <constraint firstItem="lrH-0R-hsi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uDF-lV-B1w" secondAttribute="top" constant="20" symbolic="YES" id="aSx-xL-XkU"/>
                                     <constraint firstItem="VJz-MB-dDd" firstAttribute="centerX" secondItem="uDF-lV-B1w" secondAttribute="centerX" id="qmu-ak-QJf"/>
                                     <constraint firstAttribute="bottom" secondItem="DJ2-v8-WjE" secondAttribute="bottom" constant="20" symbolic="YES" id="t0J-gQ-USr"/>
+                                    <constraint firstItem="lrH-0R-hsi" firstAttribute="centerX" secondItem="uDF-lV-B1w" secondAttribute="centerX" id="uQu-Ae-rFG"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="roomlabel" destination="lrH-0R-hsi" id="POq-Ll-1WV"/>
+                                </connections>
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SED-Ai-Cx9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="57"/>
@@ -151,11 +163,11 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="NHg-V8-V3f">
-                            <rect key="frame" x="62" y="7" width="290" height="30"/>
+                            <rect key="frame" x="63" y="7" width="288" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oz-vt-wN4">
-                                    <rect key="frame" x="0.0" y="0.0" width="290" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                     <color key="backgroundColor" white="0.972931338028169" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <attributedString key="attributedText">
                                         <fragment content="Мясницкая 20">

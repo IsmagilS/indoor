@@ -11,6 +11,8 @@ import CoreLocation
 
 class MapView: UIView {
     
+    @IBOutlet weak var roomlabel: UILabel!
+    
     var updateMapView = 0 { didSet { setNeedsDisplay() } }
     private var mapScale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
     private var mapOffsetX: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
@@ -24,8 +26,6 @@ class MapView: UIView {
     var currentPosition: CGPoint? = nil { didSet { setNeedsDisplay() } }
     
     var drawCurrentPosition = false { didSet { setNeedsDisplay() } }
-    
-    var showString: String? = nil
     
     private var minX = 0.0
     private var maxX = 0.0
@@ -79,12 +79,12 @@ class MapView: UIView {
                 
                 if figure.isInside(point: (x: Double(point.x), y: Double(point.y))) {
                     if localPolygon == nil {
-                        showString = rectangle.name
+                        roomlabel.text = rectangle.name
                         localPolygon = figure
                     }
                     else {
                         if localPolygon!.square() > figure.square() {
-                            showString = rectangle.name
+                            roomlabel.text = rectangle.name
                             localPolygon = figure
                         }
                     }
@@ -93,6 +93,9 @@ class MapView: UIView {
             
             print("@@@@@@@@@@@@@@@")
             print(localPolygon?.points ?? [])
+            if localPolygon == nil {
+                roomlabel.text = nil
+            }
         default:
             break
         }
@@ -586,5 +589,18 @@ extension Beacons {
         }
         
         return (major: firstNumber, minor: secondNumber)
+    }
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
     }
 }

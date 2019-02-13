@@ -184,7 +184,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
     
     func updateDistance(_ distance: CLProximity) {
         UIView.animate(withDuration: 0.1, animations: {
-            
             switch distance {
             case .unknown:
                 self.mapView!.backgroundColor = UIColor.darkGray
