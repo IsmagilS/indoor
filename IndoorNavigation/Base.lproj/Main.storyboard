@@ -81,7 +81,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDF-lV-B1w" customClass="MapView" customModule="indoor_navigation_a" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="145" width="414" height="667"/>
                                 <subviews>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="VJz-MB-dDd">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJz-MB-dDd">
                                         <rect key="frame" x="160" y="589.5" width="94" height="29"/>
                                         <connections>
                                             <action selector="floorStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="ukV-NG-Huh"/>
@@ -170,7 +170,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                     <color key="backgroundColor" white="0.972931338028169" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <attributedString key="attributedText">
-                                        <fragment content="Мясницкая 20">
+                                        <fragment content="Триумфальный проезд 1">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" metaFont="system" size="17"/>
