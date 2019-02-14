@@ -151,6 +151,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
                 allBeacons.append((0, current))
             }
             
+            var usedBeacons = Set<Int>()
+            
             
             for index in beacons.indices {
                 //let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
@@ -169,9 +171,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
                 }
                 
                 for secondIndex in allBeacons.indices {
-                    if allBeacons[secondIndex].1.parseMajorMinor().major == Int(truncating: beacons[index].major) {
+                    if allBeacons[secondIndex].1.parseMajorMinor().minor == Int(truncating: beacons[index].minor) {
                         allBeacons[secondIndex].0 = distance
+                        usedBeacons.insert(secondIndex)
                     }
+                }
+            }
+            
+            for secondIndex in allBeacons.indices {
+                if !usedBeacons.contains(secondIndex) {
+                    allBeacons[secondIndex].0 = 3
                 }
             }
             
@@ -274,8 +283,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
             if finishRoom != nil, nearestVertex != nil {
                 mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: nearestVertex!, finish: finishRoom!).1
                 mapView.needsPathBuild = true
+                stopshowbutton.isHidden = false
             }
             else {
+                stopshowbutton.isHidden = true
                 mapView.needsPathBuild = false
             }
         }
